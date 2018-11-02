@@ -15,6 +15,8 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import static android.support.v4.content.ContextCompat.startActivity;
+
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.RepoHolder>{
     Context mContext;
     ArrayList<NewsItem> mRepos;
@@ -58,7 +60,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.RepoHolder>{
             Description = (TextView) itemView.findViewById(R.id.description);
             Date = (TextView) itemView.findViewById(R.id.date);
 
-
         }
 
         void bind(int listIndex) {
@@ -66,8 +67,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.RepoHolder>{
             Description.setText(String.format("Description: %s", mRepos.get(listIndex).getDescription()));
             Date.setText(String.format("Date: %s", mRepos.get(listIndex).getDate()));
 
+            itemView.setOnClickListener((View view) -> {
+                Uri webpage = Uri.parse(mRepos.get(listIndex).getUrl());
+                Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+                mContext.startActivity(intent);
+
+            });
         }
-
-
+        }
     }
-}

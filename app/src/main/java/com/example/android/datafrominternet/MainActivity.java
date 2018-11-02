@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ProgressBar mProgressBar;
     private static final String TAG = "MainActivity";
-
+    private RecyclerView mRecyclerView;
     private NewsAdapter mAdapter;
     private ArrayList<NewsItem> repos = new ArrayList<>();
 
@@ -52,11 +52,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mProgressBar = (ProgressBar) findViewById(R.id.progress);
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.news_recyclerview);
+        mRecyclerView = (RecyclerView) findViewById(R.id.news_recyclerview);
         mAdapter = new NewsAdapter(this, repos);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        URL url = NetworkUtils.buildUrl();
+        NewsQueryTask task = new NewsQueryTask();
+        task.execute(url);
 
     }
 
@@ -73,9 +75,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void doIt(View view) {
-    }
-
 
     // DONE (1) Create a class called GithubQueryTask that extends AsyncTask<URL, Void, String>
     @SuppressLint("StaticFieldLeak")
@@ -85,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            mRecyclerView.setVisibility(View.GONE);
             mProgressBar.setVisibility(View.VISIBLE);
         }
 
@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("mycode", s);
             super.onPostExecute(s);
             mProgressBar.setVisibility(View.GONE);
+            mRecyclerView.setVisibility(View.VISIBLE);
             repos = JSONUtils.parseNews(s);
             mAdapter.mRepos.addAll(repos);
             mAdapter.notifyDataSetChanged();
