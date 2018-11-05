@@ -1,6 +1,4 @@
-package com.example.android.datafrominternet.model;
-
-import android.accessibilityservice.GestureDescription;
+package com.example.rkjc.news_app_2;
 
 public class NewsItem {
     private String author_name;

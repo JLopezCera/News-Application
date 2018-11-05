@@ -1,14 +1,13 @@
-package com.example.android.datafrominternet.utilities;
+package com.example.rkjc.news_app_2;
 
-import com.example.android.datafrominternet.model.NewsItem;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 
-public class JSONUtils {
+public class JsonUtils {
 
     public static ArrayList<NewsItem> parseNews (String jsonResult){
         ArrayList<NewsItem> NewsList = new ArrayList<>();
@@ -27,3 +26,5 @@ public class JSONUtils {
         return NewsList;
     }
 }
+
+
