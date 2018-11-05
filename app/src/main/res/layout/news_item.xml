@@ -9,7 +9,9 @@
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/description"
@@ -22,4 +24,14 @@
         android:layout_height="wrap_content"
         />
 
+<<<<<<< HEAD:app/src/main/res/layout/news_item.xml
+=======
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        />
+
+>>>>>>> 3433b9678d80914691a81f664ddab01d5cf48e2b:app/src/main/res/layout/item.xml
 </LinearLayout>
