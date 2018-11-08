@@ -15,12 +15,6 @@ import java.util.ArrayList;
 
 public class NewsRecyclerViewAdapter  extends RecyclerView.Adapter<NewsRecyclerViewAdapter.NewsViewHolder> {
 
-<<<<<<< HEAD:app/src/main/java/com/example/rkjc/news_app_2/NewsRecyclerViewAdapter.java
-=======
-import static android.support.v4.content.ContextCompat.startActivity;
-
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.RepoHolder>{
->>>>>>> 3433b9678d80914691a81f664ddab01d5cf48e2b:app/src/main/java/com/example/android/datafrominternet/NewsAdapter.java
     Context mContext;
     ArrayList<NewsItem> mRepos;
 
@@ -63,6 +57,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.RepoHolder>{
             Description = itemView.findViewById(R.id.description);
             Date = itemView.findViewById(R.id.date);
 
+
         }
 
         void bind(int listIndex) {
@@ -74,15 +69,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.RepoHolder>{
                 Uri webpage = Uri.parse(mRepos.get(listIndex).getUrl());
                 Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
                 mContext.startActivity(intent);
-<<<<<<< HEAD:app/src/main/java/com/example/rkjc/news_app_2/NewsRecyclerViewAdapter.java
 
             });
         }
 
-=======
->>>>>>> 3433b9678d80914691a81f664ddab01d5cf48e2b:app/src/main/java/com/example/android/datafrominternet/NewsAdapter.java
 
-            });
-        }
-        }
     }
+}
