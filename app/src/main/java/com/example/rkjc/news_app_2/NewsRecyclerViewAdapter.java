@@ -11,17 +11,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class NewsRecyclerViewAdapter  extends RecyclerView.Adapter<NewsRecyclerViewAdapter.NewsViewHolder> {
 
     Context mContext;
-    ArrayList<NewsItem> mRepos;
+    List<NewsItem> mRepos;
+    private NewsItemViewModel viewModel;
 
-
-    public NewsRecyclerViewAdapter(Context context, ArrayList<NewsItem> repos){
+    public NewsRecyclerViewAdapter(Context context, NewsItemViewModel viewModel){
         this.mContext = context;
-        this.mRepos = repos;
+        this.viewModel = viewModel;
     }
 
     @Override
@@ -39,6 +40,12 @@ public class NewsRecyclerViewAdapter  extends RecyclerView.Adapter<NewsRecyclerV
     public void onBindViewHolder(NewsRecyclerViewAdapter.NewsViewHolder holder, int position) {
         holder.bind(position);
     }
+
+    void setNews(List<NewsItem> newsItems){
+        mRepos = newsItems;
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public int getItemCount() {
