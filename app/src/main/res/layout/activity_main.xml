@@ -1,13 +1,21 @@
-����   2 � groovy/lang/Script  groovy/lang/GroovyObjectSupport  Script.java binding Lgroovy/lang/Binding; <init> ()V groovy/lang/Binding
-    
-      (Lgroovy/lang/Binding;)V  
-      this Lgroovy/lang/Script;
-       	  
-    getBinding ()Lgroovy/lang/Binding;
-    setBinding getProperty &(Ljava/lang/String;)Ljava/lang/Object; $groovy/lang/MissingPropertyException  getVariable  
-       
-       e &Lgroovy/lang/MissingPropertyException; property Ljava/lang/String; setProperty '(Ljava/lang/String;Ljava/lang/Object;)V  java/lang/String ) equals (Ljava/lang/Object;)Z + ,
-    * -  
-     / 	metaClass 1 groovy/lang/MetaClass 3 setMetaClass (Lgroovy/lang/MetaClass;)V 5 6
-     7 setVariable 9 '
-     : newValue Ljava/lang/Object; invokeMethod 8(Ljava/lang/String;Ljava/lang/Object;)Ljava
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rkjc.news_app_2.MainActivity">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/news_recyclerview"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</android.support.constraint.ConstraintLayout>
