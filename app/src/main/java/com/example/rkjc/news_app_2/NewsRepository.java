@@ -3,17 +3,15 @@ package com.example.rkjc.news_app_2;
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
-
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class NewsRepository {
 
-    private NewsItemDao nNewsItemDao;
-    private LiveData<List<NewsItem>> CurrentNewsItems;
+    private static NewsItemDao nNewsItemDao;
+    private static LiveData<List<NewsItem>> CurrentNewsItems;
 
     public NewsRepository(Application application){
         NewsDatabase db = NewsDatabase.getDatabase(application.getApplicationContext());
@@ -21,17 +19,17 @@ public class NewsRepository {
         CurrentNewsItems = nNewsItemDao.loadAllNewsItems();
     }
 
-    LiveData<List<NewsItem>> getCurrentNewsItems() {
+    static LiveData<List<NewsItem>> getCurrentNewsItems() {
         return CurrentNewsItems;
     }
 
 
-    public void sync(URL url){
-        new insertAsyncTask(nNewsItemDao).execute(url);
+    public static void sync(){
+        new insertAsyncTask(nNewsItemDao).execute();
     }
 
 
-    private static class insertAsyncTask extends AsyncTask<URL, Void, Void> {
+    private static class insertAsyncTask extends AsyncTask<Void, Void, Void> {
         private NewsItemDao mDao;
 
         insertAsyncTask(NewsItemDao dao) {
@@ -39,24 +37,24 @@ public class NewsRepository {
         }
 
         @Override
-        protected Void doInBackground(final URL... urls) {
+        protected Void doInBackground(Void... voids) {
+
+            URL url = NetworkUtils.buildUrl();
             String newsResults = "";
+            mDao.clearAll();
 
             try {
-                newsResults = NetworkUtils.getResponseFromHttpUrl(urls[0]);
+                newsResults = NetworkUtils.getResponseFromHttpUrl(url);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             List<NewsItem> articles = JsonUtils.parseNews(newsResults);
-            mDao.clearAll();
+
             for (NewsItem article : articles) {
                 mDao.insert(article);
             }
+
             return null;
-
-
         }
-
     }
 }

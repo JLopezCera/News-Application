@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">News Application</string>
     <string name="Menu_Item_Name">Refresh</string>
+    <string name="reminder_notification_title">Get new articles</string>
+    <string name="reminder_notification_body">New articles are available</string>
+    <string name="main_notification_channel_name">Primary</string>
 </resources>

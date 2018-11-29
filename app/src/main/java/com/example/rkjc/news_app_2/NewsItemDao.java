@@ -12,7 +12,7 @@ import java.util.List;
 public interface NewsItemDao {
 
 
-    @Query("SELECT * FROM news_item")
+    @Query("SELECT * FROM news_item ORDER BY id ASC")
     LiveData<List<NewsItem>> loadAllNewsItems();
 
     @Query("DELETE FROM news_item")

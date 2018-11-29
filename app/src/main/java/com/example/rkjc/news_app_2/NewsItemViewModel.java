@@ -19,15 +19,15 @@ public class NewsItemViewModel extends AndroidViewModel {
     public NewsItemViewModel(Application application){
         super(application);
         mRepository = new NewsRepository(application);
-        CurrentNewsItems = mRepository.getCurrentNewsItems();
+        CurrentNewsItems = NewsRepository.getCurrentNewsItems();
     }
 
     public LiveData<List<NewsItem>> getCurrentNewsItems(){
         return CurrentNewsItems;
     }
 
-    public static void sync(URL url){
-        mRepository.sync(url);
+    public static void sync(){
+        NewsRepository.sync();
     }
 
 

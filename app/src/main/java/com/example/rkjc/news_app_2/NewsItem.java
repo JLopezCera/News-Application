@@ -31,7 +31,7 @@ public class NewsItem{
     @ColumnInfo(name = "urlToImage")
     private String urlToImage;
 
-    public NewsItem(int id, @NonNull String author_name, @NonNull String title, @NonNull String description, @NonNull String url, @NonNull String date, @NonNull String urlToImage) {
+    public NewsItem(int id, @NonNull String author_name, @NonNull String title, @NonNull String description, @NonNull String url, @NonNull String urlToImage,@NonNull String date) {
         this.id = id;
         this.author_name = author_name;
         this.title = title;
@@ -42,7 +42,7 @@ public class NewsItem{
     }
 
     @Ignore
-    public NewsItem(@NonNull String author_name, @NonNull String title, @NonNull String description, @NonNull String url, @NonNull String date, @NonNull String urlToImage) {
+    public NewsItem(@NonNull String author_name, @NonNull String title, @NonNull String description, @NonNull String url, @NonNull String urlToImage,@NonNull String date) {
         this.author_name = author_name;
         this.title = title;
         this.description = description;
@@ -62,11 +62,6 @@ public class NewsItem{
     public String getUrl() {
         return url;
     }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
 
     public String getTitle() {
         return title;
@@ -88,11 +83,6 @@ public class NewsItem{
         return author_name;
     }
 
-    public void setAuthor_name(@NonNull String author_name) {
-        this.author_name = author_name;
-    }
-
-    @NonNull
     public String getDate() {
         return date;
     }
@@ -101,11 +91,6 @@ public class NewsItem{
         this.date = date;
     }
 
-    public void setUrlToImage(@NonNull String urlToImage) {
-        this.urlToImage = urlToImage;
-    }
-
-    @NonNull
     public String getUrlToImage() {
         return urlToImage;
     }

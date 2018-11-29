@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +51,12 @@ public class NewsRecyclerViewAdapter  extends RecyclerView.Adapter<NewsRecyclerV
 
     @Override
     public int getItemCount() {
-        return mRepos.size();
+        if(mRepos != null){
+            return mRepos.size();
+        }
+        else {
+            return 0;
+        }
     }
 
 
