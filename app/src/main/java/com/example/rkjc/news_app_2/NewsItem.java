@@ -27,23 +27,28 @@ public class NewsItem{
     @NonNull
     @ColumnInfo(name = "date")
     private String date;
+    @NonNull
+    @ColumnInfo(name = "urlToImage")
+    private String urlToImage;
 
-    public NewsItem(int id, @NonNull String author_name, @NonNull String title, @NonNull String description, @NonNull String url, @NonNull String date) {
+    public NewsItem(int id, @NonNull String author_name, @NonNull String title, @NonNull String description, @NonNull String url, @NonNull String date, @NonNull String urlToImage) {
         this.id = id;
         this.author_name = author_name;
         this.title = title;
         this.description = description;
         this.url = url;
         this.date = date;
+        this.urlToImage = urlToImage;
     }
 
     @Ignore
-    public NewsItem(@NonNull String author_name, @NonNull String title, @NonNull String description, @NonNull String url, @NonNull String date) {
+    public NewsItem(@NonNull String author_name, @NonNull String title, @NonNull String description, @NonNull String url, @NonNull String date, @NonNull String urlToImage) {
         this.author_name = author_name;
         this.title = title;
         this.description = description;
         this.url = url;
         this.date = date;
+        this.urlToImage = urlToImage;
     }
 
     public int getId(){
@@ -94,5 +99,14 @@ public class NewsItem{
 
     public void setDate(@NonNull String date) {
         this.date = date;
+    }
+
+    public void setUrlToImage(@NonNull String urlToImage) {
+        this.urlToImage = urlToImage;
+    }
+
+    @NonNull
+    public String getUrlToImage() {
+        return urlToImage;
     }
 }

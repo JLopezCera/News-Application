@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        NewsAppBackgroupUpdaterUtilities.schedulerBackgroudUpdater(this);
         newsItemViewModel.getCurrentNewsItems().observe(this, newsItems -> mAdapter.setNews(newsItems));
 
     }

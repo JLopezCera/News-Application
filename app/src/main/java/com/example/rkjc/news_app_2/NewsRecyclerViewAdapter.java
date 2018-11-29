@@ -8,7 +8,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,22 +58,25 @@ public class NewsRecyclerViewAdapter  extends RecyclerView.Adapter<NewsRecyclerV
 
     public class NewsViewHolder extends RecyclerView.ViewHolder {
         TextView Title;
-        TextView Description;
-        TextView Date;
+        TextView Abstract;
+        ImageView Article_image;
 
         public NewsViewHolder(View itemView) {
             super(itemView);
             Title = itemView.findViewById(R.id.title);
-            Description = itemView.findViewById(R.id.description);
-            Date = itemView.findViewById(R.id.date);
+            Abstract = itemView.findViewById(R.id.article_abstract);
+            Article_image = itemView.findViewById(R.id.article_image);
 
 
         }
 
         void bind(int listIndex) {
             Title.setText(String.format("Title: %s", mRepos.get(listIndex).getTitle()));
-            Description.setText(String.format("Description: %s", mRepos.get(listIndex).getDescription()));
-            Date.setText(String.format("Date: %s", mRepos.get(listIndex).getDate()));
+            Abstract.setText(mRepos.get(listIndex).getDate());
+            Abstract.append(" . ");
+            Abstract.append(mRepos.get(listIndex).getDescription());
+
+            Picasso.get().load(mRepos.get(listIndex).getUrlToImage()).into(Article_image);
 
             itemView.setOnClickListener((View view) -> {
                 Uri webpage = Uri.parse(mRepos.get(listIndex).getUrl());
